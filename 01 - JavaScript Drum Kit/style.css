@@ -1,34 +1,49 @@
 html {
   font-size: 10px;
-  background: url(http://i.imgur.com/b9r5sEL.jpg) bottom center;
-  background-size: cover;
+  /* background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+  background-size: cover; */
+  background-color: #9e926a;
+  background-image: repeating-linear-gradient(120deg, rgba(255, 255, 255, .1), rgba(255, 255, 255, .1) 1px, transparent 1px, transparent 60px), repeating-linear-gradient(60deg, rgba(255, 255, 255, .1), rgba(255, 255, 255, .1) 1px, transparent 1px, transparent 60px), linear-gradient(60deg, rgba(0, 0, 0, .1) 25%, transparent 25%, transparent 75%, rgba(0, 0, 0, .1) 75%, rgba(0, 0, 0, .1)), linear-gradient(120deg, rgba(0, 0, 0, .1) 25%, transparent 25%, transparent 75%, rgba(0, 0, 0, .1) 75%, rgba(0, 0, 0, .1));
+  background-size: 70px 120px;
 }
-body,html {
+
+body, html {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  overflow: hidden;
 }
 
 .keys {
   display: flex;
-  flex: 1;
-  min-height: 100vh;
-  align-items: center;
-  justify-content: center;
+  height: 100vh;
+  align-items: stretch;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
 }
 
 .key {
+  flex-basis: 30%;
+  box-sizing: border-box;
+  cursor: pointer;
   border: .4rem solid black;
   border-radius: .5rem;
-  margin: 1rem;
+  margin: .5rem 0;
   font-size: 1.5rem;
-  padding: 1rem .5rem;
+  /* padding: 1rem .5rem; */
   transition: all .07s ease;
-  width: 10rem;
   text-align: center;
   color: white;
-  background: rgba(0,0,0,0.4);
+  background: rgba(0, 0, 0, 0.4);
   text-shadow: 0 0 .5rem black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.key:hover {
+  background: gray;
 }
 
 .playing {

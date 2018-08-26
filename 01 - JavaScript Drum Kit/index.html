@@ -60,7 +60,33 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
   <script>
+    // keyboard version
+    window.addEventListener('keydown', (e) => drumHit(e.keyCode))
 
+
+    // on click version
+    const keysArray = document.getElementsByClassName('key')
+    for (let i = 0; i < keysArray.length; i++) {
+      keysArray[i].addEventListener('click', () => drumHit(keysArray[i].getAttribute("data-key")))
+    }
+
+    function drumHit(dataKey) {
+      const audio = document.querySelector(`audio[data-key="${dataKey}"]`)
+      const key = document.querySelector(`.key[data-key="${dataKey}"]`)
+
+      if (!audio) return;
+      audio.currentTime = 0;
+      audio.play();
+      key.classList.add('playing')
+
+      function removeTransition(e) {
+        if (e.propertyName !== 'transform') return;
+        this.classList.remove('playing')
+      }
+
+      const keys = document.querySelectorAll('.key')
+      keys.forEach(key => key.addEventListener('transitionend', removeTransition))
+    }
   </script>
 
 
